@@ -17,7 +17,7 @@ task cellranger_sc {
   set -euo pipefail
   mkdir reference_trans
   tar -zxvf ${reference_transcriptome} -C reference_trans
-  
+  ls ${fastq_files_dir}
   cellranger count \
     --id=${sample_id} \
     --transcriptome=/cromwell_root/reference_trans/ \
