@@ -17,14 +17,15 @@ task cellranger_sc {
   mkdir reference_trans
 
   tar -zxvf ${reference_transcriptome} -C reference_trans
+  trans="/cromwell_root/reference_trans/hg38_scREF"
   ls -l
   echo "xxx"
   pwd
   cellranger count \
     --id=${sample_id} \
+    --transcriptome=${trans} \
     --fastqs=${fastq_files_dir}
     --sample=${sample_id} \
-    --transcriptome=/cromwell_root/reference_trans/ \
     --localcores=${num_threads} \
     --localmem=${memory}
 
