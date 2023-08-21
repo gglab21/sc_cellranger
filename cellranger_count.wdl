@@ -21,8 +21,7 @@ task cellranger_sc {
   cellranger count \
     --id=${sample_id} \
     --transcriptome=/cromwell_root/reference_trans/ \
-    --fastqs=${fastq_files_dir}
-    --sample=${sample_id} \
+    --fastqs=${fastq_files_dir} \
     --localcores=${num_threads} \
     --localmem=${memory}
 
