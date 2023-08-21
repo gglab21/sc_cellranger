@@ -17,6 +17,8 @@ task cellranger_sc {
   mkdir reference_trans
 
   tar -zxvf ${reference_transcriptome} -C reference_trans
+  ls 
+  pwd
   cellranger count \
     --id=${sample_id} \
     --fastqs=${fastq_files_dir}
