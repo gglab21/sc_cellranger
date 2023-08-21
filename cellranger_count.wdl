@@ -15,16 +15,14 @@ task cellranger_sc {
   command {
   set -euo pipefail
   mkdir reference_trans
-
   tar -zxvf ${reference_transcriptome} -C reference_trans
-  trans="/cromwell_root/reference_trans/"
   ls -l
   echo "xxx"
-  ls ${trans}
+  ls /cromwell_root/reference_trans/
   pwd
   cellranger count \
     --id=${sample_id} \
-    --transcriptome=${trans} \
+    --transcriptome=/cromwell_root/reference_trans/ \
     --fastqs=${fastq_files_dir}
     --sample=${sample_id} \
     --localcores=${num_threads} \
