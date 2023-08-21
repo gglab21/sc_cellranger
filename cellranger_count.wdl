@@ -1,4 +1,5 @@
 task cellranger_sc {
+  Array[File] fastq_files
   String fastq_files_dir
   File reference_transcriptome
   String sample_id
@@ -16,10 +17,7 @@ task cellranger_sc {
   set -euo pipefail
   mkdir reference_trans
   tar -zxvf ${reference_transcriptome} -C reference_trans
-  ls -l
-  echo "xxx"
-  ls /cromwell_root/reference_trans/
-  pwd
+  
   cellranger count \
     --id=${sample_id} \
     --transcriptome=/cromwell_root/reference_trans/ \
