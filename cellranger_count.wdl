@@ -17,9 +17,10 @@ task cellranger_sc {
   mkdir reference_trans
 
   tar -zxvf ${reference_transcriptome} -C reference_trans
-  trans="/cromwell_root/reference_trans/hg38_scREF"
+  trans="/cromwell_root/reference_trans/"
   ls -l
   echo "xxx"
+  ls ${trans}
   pwd
   cellranger count \
     --id=${sample_id} \
