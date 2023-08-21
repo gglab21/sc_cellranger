@@ -16,7 +16,7 @@ task cellranger_sc {
   command {
   set -euo pipefail
   mkdir reference_trans
-  tar -zxvf ${reference_transcriptome} -C reference_trans
+  tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
   ls reference_trans
   cellranger count \
     --id=${sample_id} \
