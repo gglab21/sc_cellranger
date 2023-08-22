@@ -25,7 +25,7 @@ task cellranger_sc {
     --localcores=${num_threads} \
     --localmem=${memory}
 
-    gsutil -m mv ${sample_id}/* ${output_path}
+    #gsutil -m mv ${sample_id}/* ${output_path}
 
 
   }
