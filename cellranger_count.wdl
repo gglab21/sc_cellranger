@@ -33,13 +33,13 @@ task cellranger_sc {
   output {
   File analysis = "${sample_id}/*/analysis"
   File cloupe = "${sample_id}/*/cloupe.cloupe"
-  File filt_feat = "${sample_id}/*/filtered_feature_bc_matrix"
+  #File filt_feat = "${sample_id}/*/filtered_feature_bc_matrix"
   File filt_feat_h5 = "${sample_id}/*/filtered_feature_bc_matrix.h5"
   File metrics = "${sample_id}/*/metrics_summary.csv"
   File molecule = "${sample_id}/*/molecule_info.h5"
   File bam = "${sample_id}/*/possorted_genome_bam.bam"
   File bam_index = "${sample_id}/*/possorted_genome_bam.bam.bai"
-  File raw_feat = "${sample_id}/*/raw_feature_bc_matrix"
+  #File raw_feat = "${sample_id}/*/raw_feature_bc_matrix"
   File raw_feat_h5 = "${sample_id}/*/raw_feature_bc_matrix.h5"
   File web = "${sample_id}/*/web_summary.html"
   }
