@@ -26,21 +26,23 @@ task cellranger_sc {
     --localmem=${memory}
 
     #gsutil -m mv ${sample_id}/* ${output_path}
-
+  tar czf ${sample_id}_analysis.tar.gz ${sample_id}/outs/analysis
+  tar czf ${sample_id}_filt_ft_bc_matrix.tar.gz ${sample_id}/outs/filtered_feature_bc_matrix
+  tar czf ${sample_id}_raw_ft_bc_matrix.tar.gz ${sample_id}/outs/raw_feature_bc_matrix
 
   }
 
   output {
-  File analysis = "${sample_id}/outs/analysis"
+  File analysis = "${sample_id}_analysis.tar.gz"
   File cloupe = "${sample_id}/outs/cloupe.cloupe"
-  #File filt_feat = "${sample_id}/outs/filtered_feature_bc_matrix"
+  File filt_feat = "${sample_id}_filt_ft_bc_matrix.tar.gz"
   File filt_feat_h5 = "${sample_id}/outs/filtered_feature_bc_matrix.h5"
   File metrics = "${sample_id}/outs/metrics_summary.csv"
   File molecule = "${sample_id}/outs/molecule_info.h5"
   File bam = "${sample_id}/outs/possorted_genome_bam.bam"
   File bam_index = "${sample_id}/outs/possorted_genome_bam.bam.bai"
-  #File raw_feat = "${sample_id}/outs/raw_feature_bc_matrix"
-  #File raw_feat_h5 = "${sample_id}/outs/raw_feature_bc_matrix.h5"
+  File raw_feat = "${sample_id}_raw_ft_bc_matrix.tar.gz"
+  File raw_feat_h5 = "${sample_id}/outs/raw_feature_bc_matrix.h5"
   File web = "${sample_id}/outs/web_summary.html"
   }
 
