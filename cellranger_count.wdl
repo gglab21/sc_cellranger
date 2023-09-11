@@ -17,7 +17,7 @@ task cellranger_sc {
   set -euo pipefail
   mkdir reference_trans
   tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
-  ls reference_trans
+  ls -a
   cellranger count \
     --id=${sample_id} \
     --transcriptome=reference_trans/ \
@@ -25,7 +25,6 @@ task cellranger_sc {
     --localcores=${num_threads} \
     --localmem=${memory}
 
-    #gsutil -m mv ${sample_id}/* ${output_path}
   tar czf ${sample_id}_analysis.tar.gz ${sample_id}/outs/analysis
   tar czf ${sample_id}_filt_ft_bc_matrix.tar.gz ${sample_id}/outs/filtered_feature_bc_matrix
   tar czf ${sample_id}_raw_ft_bc_matrix.tar.gz ${sample_id}/outs/raw_feature_bc_matrix
