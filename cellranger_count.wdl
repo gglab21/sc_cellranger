@@ -5,6 +5,7 @@ task cellranger_sc {
   File reference_transcriptome
   String sample_id
   String output_path
+  Int len_arr = length(fastq_r1_files)*2
 
   ## cellranger count options
 
@@ -21,10 +22,10 @@ task cellranger_sc {
 
   #Reformat fq names to 10x input format
   fq_arr=($(ls ~{fastq_files_dir}))
-  num_fq='${*fq_arr[*]}'
+  
 
-  for (( c=0; c<${num_fq}; c++ )); do
-    mid=$(echo ${fq_arr[$c]} | cut -d'_' -f4-5);
+  for (( c=0; c<${len_arr}; c++ )); do
+    mid=~(echo ${fq_arr[$c]} | cut -d'_' -f4-5);
     mv ~{fastq_files_dir}~{sample_id}/${fq_arr[$c]} ~{fastq_files_dir}~{sample_id}/~{sample_id}_${mid}_00${c}.fastq.gz;
   done
 
