@@ -1,5 +1,6 @@
 task cellranger_sc {
-  Array[File] fastq_files
+  Array[File] fastq_r1_files
+  Array[File] fastq_r2_files
   String fastq_files_dir
   File reference_transcriptome
   String sample_id
@@ -17,7 +18,17 @@ task cellranger_sc {
   set -euo pipefail
   mkdir reference_trans
   tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
-  ls -a
+
+  #Reformat fq names to 10x input format
+  fq_arr=($(ls ${fastq_files_dir}))
+  num_fq=${#fq_arr[@]}
+
+  for (( c=0; c<${num_fq}; c++ )); do
+    mid=($(echo ${fq_arr[$c]} | cut -d'_' -f4-5));
+    mv ${fastq_files_dir}${sample_id}/${fq_arr[$c]} ${fastq_files_dir}${sample_id}/${sample_id}_${mid}_00${c}.fastq.gz;
+  done
+
+
   cellranger count \
     --id=${sample_id} \
     --transcriptome=reference_trans/ \
