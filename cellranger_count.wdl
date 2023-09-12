@@ -24,9 +24,10 @@ task cellranger_sc {
   fq_arr=($(ls ~{fastq_files_dir}))
   lbrace='{' 
   rbrace='}'
+  x="'"
 
   for (( c=0; c<${len_arr}; c++ )); do
-    mid1=($(awk -v var=${fq_arr[$c]} 'BEGIN${lbrace} split(var,a,"_"); print a[3], "_", a[4];${rbrace} '))
+    mid1=($(awk -v var=${fq_arr[$c]} ${x}BEGIN${lbrace} split(var,a,"_"); print a[3], "_", a[4];${rbrace} ${x}))
     mv ~{fastq_files_dir}~{sample_id}/${fq_arr[$c]} ~{fastq_files_dir}~{sample_id}/~{sample_id}_${mid1}_00${c}.fastq.gz
   done
 
