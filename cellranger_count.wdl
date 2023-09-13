@@ -18,7 +18,7 @@ task cellranger_sc {
   command <<<
   set -euo pipefail
   mkdir reference_trans
-  tar -zxvf ~{reference_transcriptome} -C reference_trans --strip-components=1
+  tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
 
   #Reformat fq names to 10x input format
   fq_arr=($(ls ~{fastq_files_dir}))
