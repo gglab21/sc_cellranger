@@ -21,7 +21,7 @@ task cellranger_sc {
   tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
 
   #Reformat fq names to 10x input format
-  fq_arr=($(ls ~{fastq_files_dir}))
+  fq_arr=($(ls ${fastq_files_dir}))
 
   for (( c=0; c<~{len_arr}; c++ ));do
     mid1=($(awk -v var="~{fq_arr[$c]}"'BEGIN{ split(var,a,"_"); print a[3], "_", a[4];}'))
