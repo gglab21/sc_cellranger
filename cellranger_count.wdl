@@ -24,7 +24,7 @@ task cellranger_sc {
   fq_arr=($(ls ${fastq_files_dir}))
   ARRAY=(~{sep=" " fastq_r1_files})
   for (( c=0; c<${len_arr}; c++ ));do
-    mid1=($(echo ${ARRAY[$c]} | cut -d'_' -f4-6))
+    echo ${ARRAY[$c]} ## | cut -d'_' -f4-6))
     mv ${fastq_files_dir}${sample_id}/${ARRAY[$c]} ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
   done
 
