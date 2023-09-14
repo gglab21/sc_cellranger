@@ -24,7 +24,7 @@ task cellranger_sc {
   #Reformat fq names to 10x input format
   fq_arr=($(ls ${fastq_files_dir}))
   for (( c=0; c<${len_arr}; c++ ));do
-    mid1=($(echo $dollar{fq_arr[$c]} | cut -d'_' -f4-6))
+    mid1=($(echo ${dollar}{fq_arr[$c]} | cut -d'_' -f4-6))
     mv ${fastq_files_dir}${sample_id}/${dollar}{fq_array[$c]} ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
   done
 
