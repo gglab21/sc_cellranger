@@ -16,7 +16,7 @@ task cellranger_sc {
   Int num_threads
   Int num_preempt
 
-  command {
+  command <<<
   set -exo pipefail
   mkdir reference_trans
   tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
@@ -54,7 +54,7 @@ task cellranger_sc {
   tar czf ${sample_id}/outs/${sample_id}_filt_ft_bc_matrix.tar.gz ${sample_id}/outs/filtered_feature_bc_matrix
   tar czf ${sample_id}/outs/${sample_id}_raw_ft_bc_matrix.tar.gz ${sample_id}/outs/raw_feature_bc_matrix
 
-  }
+  >>>
 
   output {
   File analysis = "${sample_id}/outs/${sample_id}_analysis.tar.gz"
