@@ -24,7 +24,7 @@ task cellranger_sc {
   #Reformat fq names to 10x input format
   for x in ~{sep=' ' fastq_r1_files}
     do
-      echo "${x}"
+      echo "$x"
     done;
   c=1
   for i in ~{sep=' ' fastq_r1_files}
