@@ -16,27 +16,24 @@ task cellranger_sc {
   Int num_threads
   Int num_preempt
 
-  command <<<
+  command {
   set -exo pipefail
   mkdir reference_trans
   tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
 
   #Reformat fq names to 10x input format
-  for x in ~{sep=' ' fastq_r1_files}
-    do
-      echo "$x"
-    done;
+  for x in ~{sep=' ' fastq_r1_files};do
+    echo "$x"
+  done
   c=1
-  for i in ~{sep=' ' fastq_r1_files}
-    do
-      echo "$i"
-      mid1=($(echo "$i" | cut -d'_' -f4-6))
-      echo $mid1
-      echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
-      #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
-      
-      c=c+1
-    done;
+  for i in ~{sep=' ' fastq_r1_files};do
+    echo "$i"
+    mid1=($(echo "$i" | cut -d'_' -f4-6))
+    echo $mid1
+    echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
+    #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"    
+    c=c+1
+  done
   c=1
   
   #for i in ~{sep=" " fastq_r2_files};do
@@ -57,7 +54,7 @@ task cellranger_sc {
   tar czf ${sample_id}/outs/${sample_id}_filt_ft_bc_matrix.tar.gz ${sample_id}/outs/filtered_feature_bc_matrix
   tar czf ${sample_id}/outs/${sample_id}_raw_ft_bc_matrix.tar.gz ${sample_id}/outs/raw_feature_bc_matrix
 
-  >>>
+  }
 
   output {
   File analysis = "${sample_id}/outs/${sample_id}_analysis.tar.gz"
