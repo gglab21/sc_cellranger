@@ -30,7 +30,7 @@ task cellranger_sc {
   done
   for i in ${sep=' ' fastq_r1_files};do
     echo "$i"
-    mid1=($(echo "$i" | cut -d'_' -f6-8))
+    mid1=($(echo "$i" | cut -d'_' -f7-8))
     echo $mid1
     echo "xxx"
     echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
