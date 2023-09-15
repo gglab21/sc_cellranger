@@ -6,6 +6,8 @@ task cellranger_sc {
   String sample_id
   String output_path
   Int len_arr = length(fastq_r1_files)
+  Int c = 0
+  Int d = 0
   String dollar = "$"
 
   ## cellranger count options
@@ -26,16 +28,15 @@ task cellranger_sc {
   for x in ${sep=' ' fastq_r1_files};do
     echo "$x"
   done
-  c=1
   for i in ${sep=' ' fastq_r1_files};do
     echo "$i"
-    mid1=($(echo "$i" | cut -d'_' -f4-6))
+    mid1=($(echo "$i" | cut -d'_' -f6-8))
     echo $mid1
+    echo'xxx'
     echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
     #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"    
     c=$c+1
   done
-  c=1
   
   #for i in ${sep=' ' fastq_r1_files};do
   #  mid1=($(echo $i | cut -d'_' -f4-6))
