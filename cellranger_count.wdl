@@ -22,7 +22,8 @@ task cellranger_sc {
   #tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
 
   #Reformat fq names to 10x input format
-  for x in ~{sep(' ', fastq_r1_files)};do
+  echo fastq_r1_files[1]
+  for x in ${sep=' ' fastq_r1_files};do
     echo "$x"
   done
   c=1
