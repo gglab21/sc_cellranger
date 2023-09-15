@@ -19,14 +19,14 @@ task cellranger_sc {
   command <<<
   set -exo pipefail
   mkdir reference_trans
-  tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
+  #tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
 
   #Reformat fq names to 10x input format
-  for x in ~{sep=' ' fastq_r1_files};do
+  for x in ~{sep='" "' fastq_r1_files};do
     echo "$x"
   done
   c=1
-  for i in ~{sep=' ' fastq_r1_files};do
+  for i in ~{sep='" "' fastq_r1_files};do
     echo "$i"
     mid1=($(echo "$i" | cut -d'_' -f4-6))
     echo $mid1
