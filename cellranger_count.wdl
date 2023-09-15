@@ -32,7 +32,7 @@ task cellranger_sc {
     echo "$i"
     mid1=($(echo "$i" | cut -d'_' -f6-8))
     echo $mid1
-    echo'xxx'
+    echo "xxx"
     echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
     #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"    
     c=$c+1
