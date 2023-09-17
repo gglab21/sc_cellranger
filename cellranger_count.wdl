@@ -25,9 +25,7 @@ task cellranger_sc {
 
   #Reformat fq names to 10x input format
   echo fastq_r1_files[1]
-  for x in ${sep=' ' fastq_r1_files};do
-    echo "$x"
-  done
+  x=0
   for i in ${sep=' ' fastq_r1_files};do
     echo "$i"
     mid1=($(echo "$i" | cut -d'_' -f7-8))
@@ -35,7 +33,7 @@ task cellranger_sc {
     echo "xxx"
     echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${c}".fastq.gz"
     #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${c}".fastq.gz"    
-    Int c=${c}+1
+    x=$x+1
   done
   
   #for i in ${sep=' ' fastq_r1_files};do
