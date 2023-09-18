@@ -34,8 +34,9 @@ task cellranger_sc {
     
     echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
     fl=($(basename $i))
-    cp "/cromwell_root/"${fastq_files_dir}${sample_id}/$fl ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz" 
-    cp "/cromwell_root/"${fastq_files_dir}${sample_id}/$fl ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid2"_00"$c".fastq.gz"
+    cp $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_001.fastq.gz" 
+    cp $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid2"_001.fastq.gz"
+    ls ${fastq_files_dir}${sample_id}/
     c=$c_1
   done
 
