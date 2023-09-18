@@ -25,22 +25,17 @@ task cellranger_sc {
 
   #Reformat fq names to 10x input format
   echo fastq_r1_files[1]
-  x=0
+
   for i in ${sep=' ' fastq_r1_files};do
     echo "$i"
     mid1=($(echo "$i" | cut -d'_' -f7-8))
-    echo $mid1
-    echo "xxx"
-    echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${x}".fastq.gz"
-    #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${c}".fastq.gz"    
-    x=${x}+1
+    mid2=($(echo $mid1 | sed -r 's/_R1/_R2/'))
+    
+    echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
+    mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz" 
+    mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid2"_00"$c".fastq.gz"
+    c=$c_1
   done
-  
-  #for i in ${sep=' ' fastq_r1_files};do
-  #  mid1=($(echo $i | cut -d'_' -f4-6))
-  #  mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
-  #  c++
-  #done
 
 
   cellranger count \
