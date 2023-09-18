@@ -22,7 +22,7 @@ task cellranger_sc {
   set -exo pipefail
   mkdir reference_trans
   #tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
-
+  ls ${fastq_files_dir}
   #Reformat fq names to 10x input format
   echo fastq_r1_files[1]
 
@@ -32,8 +32,9 @@ task cellranger_sc {
     mid2=($(echo $mid1 | sed -r 's/_R1/_R2/'))
     
     echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
-    mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz" 
-    mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid2"_00"$c".fastq.gz"
+    fl =($(basename $i)
+    mv ${fastq_files_dir}$fl ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz" 
+    mv ${fastq_files_dir}$fl ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid2"_00"$c".fastq.gz"
     c=$c_1
   done
 
