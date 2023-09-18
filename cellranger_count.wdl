@@ -31,9 +31,9 @@ task cellranger_sc {
     mid1=($(echo "$i" | cut -d'_' -f7-8))
     echo $mid1
     echo "xxx"
-    echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${c}".fastq.gz"
+    echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${x}".fastq.gz"
     #mv $i ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"${c}".fastq.gz"    
-    c=${c}+1
+    x=${x}+1
   done
   
   #for i in ${sep=' ' fastq_r1_files};do
