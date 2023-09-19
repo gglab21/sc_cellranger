@@ -22,7 +22,7 @@ task cellranger_sc {
   set -exo pipefail
   mkdir reference_trans
   #tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
-  mkdir ${fastq_files_dir}${sample_id}
+  mkdir "${fastq_files_dir}${sample_id}"
   ls -a
   #Reformat fq names to 10x input format
   echo fastq_r1_files[1]
