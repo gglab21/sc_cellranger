@@ -44,7 +44,7 @@ task cellranger_sc {
   cellranger count \
     --id=${sample_id} \
     --transcriptome=reference_trans/ \
-    --fastqs=${fastq_files_dir} \
+    --fastqs=${fastq_files_dir}${sample_id}/ \
     --localcores=${num_threads} \
     --localmem=${memory}
 
