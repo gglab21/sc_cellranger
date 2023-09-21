@@ -21,25 +21,8 @@ task cellranger_sc {
   command <<<
   set -exo pipefail
   mkdir reference_trans
-  #tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
-  mkdir -p "${fastq_files_dir}${sample_id}"
+  tar -zxvf ${reference_transcriptome} -C reference_trans --strip-components=1
   ls -a
-  #Reformat fq names to 10x input format
-  echo fastq_r1_files[1]
-
-  for i in ${sep=' ' fastq_r1_files};do
-    echo "$i"
-    mid1=($(echo "$i" | cut -d'_' -f7-8))
-    mid2=($(echo $mid1 | sed -r 's/_R1/_R2/'))
-    
-    echo ${fastq_files_dir}${sample_id}/${sample_id}"_"$mid1"_00"$c".fastq.gz"
-    fl=($(basename $i))
-    cp $i ${fastq_files_dir}${sample_id}"_"$mid1"_001.fastq.gz" 
-    cp $i ${fastq_files_dir}${sample_id}"_"$mid2"_001.fastq.gz"
-    ls ${fastq_files_dir}${sample_id}/
-    c=$c_1
-  done
-
 
   cellranger count \
     --id=${sample_id} \
