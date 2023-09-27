@@ -8,11 +8,11 @@ task gen_samp_map {
   Int num_threads
   Int num_preempt
 
-  command {
+  command <<<
   set -euo pipefail
   python << CODE
   paths = ['~{sep="','" input_path}']
-  samps = ['~{sep="','" samps_names}']
+  samps = ['~{sep="','" sample_names}']
 
   if len(paths)!= len(samps)
     print("Number of samples not equal to number of files")
@@ -22,7 +22,7 @@ task gen_samp_map {
       fin.write(samps[i] + ", " + paths[i] +"\n")
   CODE
   mv map.csv ${map_csv}
-  }
+  >>>
 
   output {
     File sample_map = map_csv
