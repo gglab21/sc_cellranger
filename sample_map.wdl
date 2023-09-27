@@ -20,7 +20,7 @@ task gen_samp_map {
   with open("map.csv","w") fin:
     for i in range(len(paths)):
       fin.write(samps[i] + ", " + paths[i] +"\n")
-
+  CODE
   mv map.csv ${map_csv}
   }
 
