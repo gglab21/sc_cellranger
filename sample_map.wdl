@@ -19,7 +19,7 @@ task gen_samp_map {
     exit(1)
   with open("map.csv","w") as fin:
     fin.write("sample_id,molecule_h5\n")
-    for i in range(len(paths)):
+    for i in range(len(file_paths)):
       fin.write(sample_names[i] + ", " + file_paths[i] +"\n")
   CODE
   mv map.csv ${map_csv}
