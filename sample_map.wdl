@@ -11,8 +11,8 @@ task gen_samp_map {
   command <<<
   set -euo pipefail
   python << CODE
-  file_paths = ['~{sep="','" file_paths}']
-  sample_names = ['~{sep="','" sample_names}']
+  file_paths = ['${sep="','" file_paths}']
+  sample_names = ['${sep="','" sample_names}']
 
   if len(file_paths)!= len(sample_names):
     print("Number of samples not equal to number of files")
