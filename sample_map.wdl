@@ -39,3 +39,7 @@ task gen_samp_map {
     author: "Gabriel Goodney"
   }
 }
+
+workflow sample_map {
+  call gen_samp_map
+}
