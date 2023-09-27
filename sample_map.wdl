@@ -14,7 +14,7 @@ task gen_samp_map {
   paths = ['~{sep="','" input_path}']
   samps = ['~{sep="','" sample_names}']
 
-  if len(paths)!= len(samps)
+  if len(paths)!= len(samps):
     print("Number of samples not equal to number of files")
     exit(1)
   with open("map.csv","w") fin:
