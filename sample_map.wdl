@@ -1,3 +1,4 @@
+version 1.0
 workflow GenerateSampleMap {
   input {
     Array[String] sample_names
