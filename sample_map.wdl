@@ -1,33 +1,3 @@
-version 1.0
-## Copyright Broad Institute, 2019
-## Purpose: 
-## Generate a sample_map file, which can be used for JointGenotyping workflow
-##
-## Requirements/expectations :
-## - An array of file paths
-## - An array of file names
-## - Name of output sample_map
-##
-## Outputs :
-## - sample map file
-##
-## Cromwell version support 
-## - Successfully tested on v47
-## - Does not work on versions < v23 due to output syntax
-##
-## Runtime parameters are optimized for Broad's Google Cloud Platform implementation.
-##
-## LICENSING : 
-## This script is released under the WDL source code license (BSD-3) (see LICENSE in 
-## https://github.com/broadinstitute/wdl). Note however that the programs it calls may 
-## be subject to different licenses. Users are responsible for checking that they are
-## authorized to run all programs before running this script. Please see the dockers
-## for detailed licensing information pertaining to the included programs.
-
-
-
-# WORKFLOW DEFINITION 
-
 workflow GenerateSampleMap {
   input {
     Array[String] sample_names
