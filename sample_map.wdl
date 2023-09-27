@@ -11,16 +11,16 @@ task gen_samp_map {
   command <<<
   set -euo pipefail
   python << CODE
-  paths = ['~{sep="','" input_path}']
-  samps = ['~{sep="','" sample_names}']
+  file_paths = ['~{sep="','" file_paths}']
+  sample_names = ['~{sep="','" sample_names}']
 
-  if len(paths)!= len(samps):
+  if len(file_paths)!= len(sample_names):
     print("Number of samples not equal to number of files")
     exit(1)
   with open("map.csv","w") as fin:
     fin.write("sample_id,molecule_h5\n")
     for i in range(len(paths)):
-      fin.write(samps[i] + ", " + paths[i] +"\n")
+      fin.write(sample_names[i] + ", " + file_paths[i] +"\n")
   CODE
   mv map.csv ${map_csv}
   >>>
