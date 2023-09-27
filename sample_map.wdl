@@ -46,8 +46,9 @@ task GenerateSampleMapFile {
       exit(1)
 
     with open("sample_map_file.txt", "w") as fi:
+      fi.write("sample_id,molecule_h5\n")
       for i in range(len(file_paths)):
-        fi.write(sample_names[i] + "\t" + file_paths[i] + "\n") 
+        fi.write(sample_names[i] + "," + file_paths[i] + "\n") 
 
     CODE
     mv sample_map_file.txt ~{outfile}
