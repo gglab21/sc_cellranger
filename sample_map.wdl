@@ -18,6 +18,7 @@ task gen_samp_map {
     print("Number of samples not equal to number of files")
     exit(1)
   with open("map.csv","w") fin:
+    fin.write("sample_id,molecule_h5\n")
     for i in range(len(paths)):
       fin.write(samps[i] + ", " + paths[i] +"\n")
   CODE
