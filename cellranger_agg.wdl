@@ -14,14 +14,13 @@ task cellranger_ag {
 
   command <<<
   set -euo pipefail
-
+  ls
   cellranger aggr \
     --id=${set_id} \
     --csv=${sample_map} \
     --localcores=${num_threads} \
     --localmem=${memory}
 
-  ls
   tar czf ${set_id}_outs.tar.gz ${set_id}/outs
 
   >>>
