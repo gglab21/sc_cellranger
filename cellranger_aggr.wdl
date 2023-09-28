@@ -44,6 +44,6 @@ task cellranger_ag {
 
 }
 
-workflow cellranger_aggregate {
+workflow cellranger_aggr {
   call cellranger_ag
 }
