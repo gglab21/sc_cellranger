@@ -1,5 +1,6 @@
 task cellranger_ag {
-  String mol_hd5
+  Array[File] mol_hd5
+  Array[String] sample_id
   File sample_map
   String set_id
 
@@ -20,14 +21,13 @@ task cellranger_ag {
     --localcores=${num_threads} \
     --localmem=${memory}
 
-    tar czf count.tar.gz count
+  ls
+  tar czf ${set_id}_outs.tar.gz ${set_id}/outs
 
   }
 
   output {
-  File aggregation = "aggregation.csv"
-  File aggregate_out = "count.tar.gz"
-  File web = "web_summary.html"
+  File aggregate_out = "${set_id}_outs.tar.gz"
   }
 
   runtime{
