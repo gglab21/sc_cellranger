@@ -30,7 +30,7 @@ task cellranger_ag {
   File aggregate_out = "${set_id}_outs.tar.gz"
   }
 
-  runtime{
+  runtime {
     docker: "nfcore/cellranger:7.1.0"
     memory: "${memory}GB"
     disks: "local-disk ${disk_space} HDD"
