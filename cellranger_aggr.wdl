@@ -12,7 +12,7 @@ task cellranger_ag {
   Int num_threads
   Int num_preempt
 
-  command {
+  command <<<
   set -euo pipefail
 
   cellranger aggr \
@@ -24,7 +24,7 @@ task cellranger_ag {
   ls
   tar czf ${set_id}_outs.tar.gz ${set_id}/outs
 
-  }
+  >>>
 
   output {
   File aggregate_out = "${set_id}_outs.tar.gz"
